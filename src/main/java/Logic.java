@@ -1,5 +1,3 @@
-import model.Course;
-import model.Discipline;
 import model.User;
 
 import java.util.*;
@@ -8,31 +6,64 @@ public class Logic {
 
     public static void main(String[] args) {
 
-        Course course = new Course("J2EE Developer");
+        Init init = new Init();
+        init.initDisciplineList();
+        init.initCourse();
+        init.initUser();
 
-        List<Discipline> listOfDiscipline = new ArrayList<>();
-
-        listOfDiscipline.add(new Discipline("Технология Java Servlets", 8));
-        listOfDiscipline.add(new Discipline("Struts Framework", 24));
-
-        course.setDisciplineList(listOfDiscipline);
-        User user = new User("Denis","Protasov",course,new int[]{3,4,5,1,1});
+        String requireName = "";
 
 
-        System.out.println(user.getName() + " " + user.getSurName() + " - Начало курса по программе " + user.getCourse().getName()
-                + ". Его оценки "+ Arrays.toString(user.getMarks()));
+//        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+//             requireName = reader.readLine();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        Calendar calendar;
-        calendar = Calendar.getInstance();
-        Date date = new Date(1995,5,19);
-        calendar.setTime(date);
-//        Date date = calendar.getTime();
-        System.out.println(date);
 
-      calendar.add(Calendar.DAY_OF_YEAR,10);
+        List<User> users = init.getUsers();
 
-      Date date1 = calendar.getTime();
-        System.out.println(date1);
+//        for (User user : users){
+//            if (user.getName().equals(requireName)){
+//
+//            }else{
+//                System.out.println("We cant find this user");
+//            }
+//        }
+
+//        System.out.println(users.get(0).getMarks().size());
+//        System.out.println(users.get(0).getMarks());
+//
+//        System.out.println(Calc.coursesDurationDays(users.get(0).getCourse()));
+//        System.out.println(users.get(0).getCourse());
+//
+//        System.out.println(Calc.isUserGoHome(users.get(0),users.get(0).getCourse()));
+//
+//        System.out.println(Calc.coursesDurationHours(users.get(0).getCourse()));
+
+        System.out.println(Calc.timeRemaning(users.get(0),users.get(0).getCourse()));
+//        System.out.println(Calc.timeRemaning(users.get(1),users.get(1).getCourse()));
+//        System.out.println(Calc.timeRemaning(users.get(2),users.get(2).getCourse()));
+
+        System.out.println(users.get(0).getName() + " " + Calc.averageMark(users.get(0)) +
+                " " + (Calc.isUserGoHome(users.get(0), users.get(0).getCourse()) ? "Отчислить":"Может продолжать обучение"));
+
+        Calc.OnlyGoodGuyz(users);
+
+
+
+//        Calc.sortByTimeRemaning(users);
+//        System.out.println();
+//        Calc.sortByAverageMark(users);
+
+
+
+
+
+
+
+
+
 
 
 

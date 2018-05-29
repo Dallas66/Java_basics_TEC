@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Objects;
 
 public class Discipline {
 
@@ -28,5 +27,11 @@ public class Discipline {
         this.durations = durations;
     }
 
-
+    @Override
+    public String toString() {
+        return "Discipline{" +
+                "name='" + name + '\'' +
+                ", durations=" + durations +
+                '}';
+    }
 }

@@ -2,22 +2,21 @@ package model;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 
 public class User {
 
     private String name;
-    private String surName;
     private Course course;
-//    private Date date;
-    private int[] marks;
+    private Date date;
+    private List<Integer> marks;
 
-    public User(String name, String surName, Course course, int[] marks) {
+    public User(String name, Course course, Date date, List<Integer> marks) {
         this.name = name;
-        this.surName = surName;
         this.course = course;
-//        this.date = date;
+        this.date = date;
         this.marks = marks;
     }
 
@@ -29,14 +28,6 @@ public class User {
         this.name = name;
     }
 
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
-
     public Course getCourse() {
         return course;
     }
@@ -45,19 +36,20 @@ public class User {
         this.course = course;
     }
 
-//    public Date getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Date date) {
-//        this.date = date;
-//    }
 
-    public int[] getMarks() {
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public List<Integer> getMarks() {
         return marks;
     }
 
-    public void setMarks(int[] marks) {
+    public void setMarks(List<Integer> marks) {
         this.marks = marks;
     }
 
@@ -65,9 +57,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
                 ", course=" + course +
-                ", marks=" + Arrays.toString(marks) +
+                ", date=" + date +
+                ", marks=" + marks +
                 '}';
     }
 }
